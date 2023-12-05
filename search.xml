@@ -4,54 +4,20 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2023/12/04/1232/"/>
-      <url>/2023/12/04/1232/</url>
+      <title>作业No1</title>
+      <link href="/2023/12/05/%E4%BD%9C%E4%B8%9A1/"/>
+      <url>/2023/12/05/%E4%BD%9C%E4%B8%9A1/</url>
       
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 321 </category>
-          
-          <category> 54 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2023/12/04/1321/"/>
-      <url>/2023/12/04/1321/</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="题目汇总"><a href="#题目汇总" class="headerlink" title="题目汇总"></a>题目汇总</h1><p>1、安装虚拟机软件VMware；<br>2、下载任意版本Kali Linux虚拟机镜像（官网等 或 同学之间互相拷贝）；<br>3、下载metasploitable2虚拟机镜像（群共享metasploitable-linux-2.0.0.zip）</p><h1 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h1><p>安装虚拟机软件VMware；</p><p><img src="/%E4%BD%9C%E4%B8%9A1.assets/image-20231205122403024.png" alt="image-20231205122403024"></p><h1 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h1><p>下载任意版本Kali Linux虚拟机镜像（官网等 或 同学之间互相拷贝）；</p><p><img src="/%E4%BD%9C%E4%B8%9A1.assets/image-20231205122503825.png" alt="image-20231205122503825"></p><h1 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h1><p>下载metasploitable2虚拟机镜像（群共享metasploitable-linux-2.0.0.zip</p><p><img src="/%E4%BD%9C%E4%B8%9A1.assets/image-20231205122543792.png" alt="image-20231205122543792"></p>]]></content>
       
       
       <categories>
           
-          <category> 321 </category>
+          <category> 网络渗透测试 </category>
           
-          <category> 123 </category>
+          <category> 作业 </category>
           
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2023/12/04/hello-world/"/>
-      <url>/2023/12/04/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
       
       
     </entry>
