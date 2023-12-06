@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>作业No2</title>
+      <link href="/2023/12/06/%E4%BD%9C%E4%B8%9A2/"/>
+      <url>/2023/12/06/%E4%BD%9C%E4%B8%9A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目汇总"><a href="#题目汇总" class="headerlink" title="题目汇总"></a>题目汇总</h1><p>1.与ZoomEye功能类似的搜索引擎还有哪些？</p><p>2.利用ZoomEye进行相关搜索，截图，发布到自己的Blog。</p><p>3.子域名收集，截图。</p><h1 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h1><p>与ZoomEye功能类似的搜索引擎还有哪些？</p><p> 回答： 除了ZoomEye之外，还有一些功能类似的搜索引擎，包括：</p><ol><li><p>Shodan：Shodan是一个面向物联网设备的搜索引擎，可以搜索全球范围内连接到互联网的设备，包括路由器、摄像头、服务器等等。用户可以使用Shodan搜索设备，发现漏洞，探查设备安全性等。</p></li><li><p>BinaryEdge：BinaryEdge是一款面向企业的安全分析工具，提供网络情报、风险评估、漏洞扫描等功能。与ZoomEye类似，BinaryEdge可以搜索Internet上所有的设备和服务，并对其进行评估和分类。</p></li><li><p>Censys：Censys是一个面向互联网设备和服务的搜索引擎，可以帮助用户发现全球范围内的漏洞和威胁。它可以搜索IPv4和IPv6地址、证书、域名、协议等信息。</p></li><li><p>Fofa Pro：Fofa Pro是一款面向企业的网络安全搜索引擎，可以搜索包括IP地址、域名、子域名、端口、关键词等信息。它可以帮助用户发现互联网上的资产和漏洞，评估企业的安全风险。</p></li></ol><h1 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h1><p>利用ZoomEye进行相关搜索，截图，发布到自己的Blog</p><p>回答：搜索  领势 Compact Wireless-G 网络视频摄像机 http服务器</p><p><img src="/../images/%E4%BD%9C%E4%B8%9A2.assets/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE2023-12-06113341.png"></p><h1 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h1><p>子域名收集，截图。</p><p>回答：搜索 </p><p><a href="https://www.baidu.com/">百度</a></p><p> 的子域名</p><p><img src="/../images/%E4%BD%9C%E4%B8%9A2.assets/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE2023-12-06113825.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络渗透测试 </category>
+          
+          <category> 作业 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 作业 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>作业No1</title>
       <link href="/2023/12/05/%E4%BD%9C%E4%B8%9A1/"/>
       <url>/2023/12/05/%E4%BD%9C%E4%B8%9A1/</url>
