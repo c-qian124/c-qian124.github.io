@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>实验一 网络扫描与网络侦察 | cQianBlog</title><meta name="author" content="cQian"><meta name="copyright" content="cQian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实验一 网络扫描与网络侦察1. 实验目的和要求实验目的：理解网络扫描、网络侦察的作用；通过搭建网络渗透测试平台，了解并熟悉常用搜索引擎、扫描工具的应用，通过信息收集为下一步渗透工作打下基础。 系统环境：Kali Linux 2、Windows 网络环境：交换网络结构 实验工具： Metasploitable2（需自行下载虚拟机镜像）；Nmap（Kali）；WinHex、数据恢复软件等 2. 实验步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验一 网络扫描与网络侦察">
+<meta property="og:url" content="http://example.com/2023/12/10/%E5%AE%9E%E9%AA%8C%E4%B8%80%20%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F/index.html">
+<meta property="og:site_name" content="cQianBlog">
+<meta property="og:description" content="实验一 网络扫描与网络侦察1. 实验目的和要求实验目的：理解网络扫描、网络侦察的作用；通过搭建网络渗透测试平台，了解并熟悉常用搜索引擎、扫描工具的应用，通过信息收集为下一步渗透工作打下基础。 系统环境：Kali Linux 2、Windows 网络环境：交换网络结构 实验工具： Metasploitable2（需自行下载虚拟机镜像）；Nmap（Kali）；WinHex、数据恢复软件等 2. 实验步">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2023-12-10T13:57:39.142Z">
+<meta property="article:modified_time" content="2023-12-10T15:06:51.295Z">
+<meta property="article:author" content="cQian">
+<meta property="article:tag" content="实验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/12/10/%E5%AE%9E%E9%AA%8C%E4%B8%80%20%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":-1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '实验一 网络扫描与网络侦察',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-10 23:06:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/background.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="cQianBlog"><span class="site-name">cQianBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">实验一 网络扫描与网络侦察</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-10T13:57:39.142Z" title="发表于 2023-12-10 21:57:39">2023-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-10T15:06:51.295Z" title="更新于 2023-12-10 23:06:51">2023-12-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">网络渗透测试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%AE%9E%E9%AA%8C/">实验</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="实验一 网络扫描与网络侦察"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="实验一-网络扫描与网络侦察"><a href="#实验一-网络扫描与网络侦察" class="headerlink" title="实验一 网络扫描与网络侦察"></a>实验一 网络扫描与网络侦察</h1><h2 id="1-实验目的和要求"><a href="#1-实验目的和要求" class="headerlink" title="1. 实验目的和要求"></a>1. 实验目的和要求</h2><p>实验目的：理解网络扫描、网络侦察的作用；通过搭建网络渗透测试平台，了解并熟悉常用搜索引擎、扫描工具的应用，通过信息收集为下一步渗透工作打下基础。</p>
+<p>系统环境：Kali Linux 2、Windows</p>
+<p>网络环境：交换网络结构</p>
+<p>实验工具： Metasploitable2（需自行下载虚拟机镜像）；Nmap（Kali）；WinHex、数据恢复软件等</p>
+<h2 id="2-实验步骤"><a href="#2-实验步骤" class="headerlink" title="2. 实验步骤"></a>2. 实验步骤</h2><h3 id="1、用搜索引擎Google或百度搜索麻省理工学院网站中文件名包含“network-security”的pdf文档，截图搜索得到的页面。"><a href="#1、用搜索引擎Google或百度搜索麻省理工学院网站中文件名包含“network-security”的pdf文档，截图搜索得到的页面。" class="headerlink" title="1、用搜索引擎Google或百度搜索麻省理工学院网站中文件名包含“network security”的pdf文档，截图搜索得到的页面。"></a>1、用搜索引擎Google或百度搜索麻省理工学院网站中文件名包含“network security”的pdf文档，截图搜索得到的页面。</h3><p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/1.png"></p>
+<h3 id="2、照片中的女生在哪里旅行？截图搜索到的地址信息。"><a href="#2、照片中的女生在哪里旅行？截图搜索到的地址信息。" class="headerlink" title="2、照片中的女生在哪里旅行？截图搜索到的地址信息。"></a>2、照片中的女生在哪里旅行？截图搜索到的地址信息。</h3><p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/2-1.png"></p>
+<p>回答：使用搜索引擎得到地址，再通过谷歌地图找到门店（需要调整时间）</p>
+<p>![](..&#x2F;images&#x2F;实验1-网络扫描与网络侦察.assets&#x2F;2-1.png</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/2-2.png"></p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/2-3.png"></p>
+<h3 id="3、手机位置定位。"><a href="#3、手机位置定位。" class="headerlink" title="3、手机位置定位。"></a>3、手机位置定位。</h3><p>通过LAC（Location Area Code，位置区域码）和CID（Cell Identity，基站编号，是个16位的数据（范围是0到65535）可以查询手机接入的基站的位置，从而初步确定手机用户的位置。</p>
+<p>获取自己手机的LAC和CID：</p>
+<p>Android 获取方法：Android： 拨号*#<em>#4636#</em>#*进入手机信息工程模式后查看</p>
+<p>iphone获取方法：iPhone：拨号*3001#12345#*进入FieldTest</p>
+<p>Serving Cell info–&gt;LAC&#x3D;Tracking Area Code –&gt;cellid &#x3D; Cell identity</p>
+<p>若不能获取，用右图信息。</p>
+<p>截图你查询到的位置信息。</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/3-1.png.jpg"></p>
+<p>回答：使用右图信息</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/3-2.png"></p>
+<h3 id="4、编码解码"><a href="#4、编码解码" class="headerlink" title="4、编码解码"></a>4、编码解码</h3><p>将Z29vZCBnb29kIHN0dWR5IQ&#x3D;&#x3D;解码。截图。</p>
+<p>回答：</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/4-1.png"></p>
+<h3 id="5、地址信息"><a href="#5、地址信息" class="headerlink" title="5、地址信息"></a>5、地址信息</h3><h4 id="5-1内网中捕获到一个以太帧，源MAC地址为：98-CA-33-02-27-B5；目的IP地址为：202-193-64-34，回答问题：该用户使用的什么品牌的设备，访问的是什么网站？并附截图。"><a href="#5-1内网中捕获到一个以太帧，源MAC地址为：98-CA-33-02-27-B5；目的IP地址为：202-193-64-34，回答问题：该用户使用的什么品牌的设备，访问的是什么网站？并附截图。" class="headerlink" title="5.1内网中捕获到一个以太帧，源MAC地址为：98-CA-33-02-27-B5；目的IP地址为：202.193.64.34，回答问题：该用户使用的什么品牌的设备，访问的是什么网站？并附截图。"></a>5.1内网中捕获到一个以太帧，源MAC地址为：98-CA-33-02-27-B5；目的IP地址为：202.193.64.34，回答问题：该用户使用的什么品牌的设备，访问的是什么网站？并附截图。</h4><p>回答：该用户使用的设备为苹果品牌</p>
+<p>该IP定位为“广西桂林市桂林电子科技大学”</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/5-1-1.png"></p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/5-1-2.png"></p>
+<h4 id="5-2-访问https-whatismyipaddress-com得到MyIP信息，利用ipconfig-Windows-或ifconfig-Linux-查看本机IP地址，两者值相同吗？如果不相同的话，说明原因"><a href="#5-2-访问https-whatismyipaddress-com得到MyIP信息，利用ipconfig-Windows-或ifconfig-Linux-查看本机IP地址，两者值相同吗？如果不相同的话，说明原因" class="headerlink" title="5.2 访问https://whatismyipaddress.com得到MyIP信息，利用ipconfig(Windows)或ifconfig(Linux)查看本机IP地址，两者值相同吗？如果不相同的话，说明原因"></a>5.2 访问<a href="https://whatismyipaddress.com得到MyIP信息，利用ipconfig(Windows)或ifconfig(Linux)查看本机IP地址，两者值相同吗？如果不相同的话，说明原因">https://whatismyipaddress.com得到MyIP信息，利用ipconfig(Windows)或ifconfig(Linux)查看本机IP地址，两者值相同吗？如果不相同的话，说明原因</a></h4><p>回答：不相同，原因：</p>
+<p> 我们能够上网靠的是isp组织分给我们的Ip地址，但是这个ip地址一般不是给个人的，一般都是给一个单位，一个区域的，也就是说我们实际上能接触到的一般都是私有地址，即我们用ipconig查到的都是私有地址，也就相当于局域网内的ip地址，当我们真正联网时，会先把数据发送到路由，然后再由路由进行处理实现真正的联网操作，路由的地址才是真正联网的Ip地址，也就是pubilc ip，而我们在自己电脑上查到的都是私有ip</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/5-2-1.png"></p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/5-2-2.png"></p>
+<h3 id="6、NMAP使用"><a href="#6、NMAP使用" class="headerlink" title="6、NMAP使用"></a>6、NMAP使用</h3><h4 id="6-1利用NMAP扫描Metasploitable2（需下载虚拟机镜像）的端口开放情况。并附截图。说明其中四个端口的提供的服务，查阅资料，简要说明该服务的功能"><a href="#6-1利用NMAP扫描Metasploitable2（需下载虚拟机镜像）的端口开放情况。并附截图。说明其中四个端口的提供的服务，查阅资料，简要说明该服务的功能" class="headerlink" title="6.1利用NMAP扫描Metasploitable2（需下载虚拟机镜像）的端口开放情况。并附截图。说明其中四个端口的提供的服务，查阅资料，简要说明该服务的功能"></a>6.1利用NMAP扫描Metasploitable2（需下载虚拟机镜像）的端口开放情况。并附截图。说明其中四个端口的提供的服务，查阅资料，简要说明该服务的功能</h4><p>回答:通过NMAP扫描整个子网得到Metasploitable2的ip以及开发端口</p>
+<p>其中</p>
+<p>a.80端口为web服务</p>
+<p>b.3306端口为MySQL数据库服务</p>
+<p>C.21端口主要用于FTP（File Transfer Protocol，文件传输协议）服务。</p>
+<p>FTP服务主要是为了在两台计算机之间实现文件的上传与下载，一台计算机作为FTP客户端，另一台计算机作为FTP服务器，可以采用匿名（anonymous）登录和授权用户名与密码登录两种方式登录FTP服务器。</p>
+<p>d.22端口主要用于SSH(Secure SHell)</p>
+<p>SSH的英文全称是Secure SHell。通过使用SSH，你可以把所有传输的数据进行加密，这样“中间人”这种攻击方式就不可能实现了，而且也能够防止DNS和IP欺骗。还有一个额外的好处就是传输的数据是经过压缩的，所以可以加快传输的速度。SSH有很多功能，它既可以代替telnet，又可以为ftp、pop、甚至ppp提供一个安全的“通道”</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/6-1-1.png"></p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/6-1-2.png"></p>
+<h4 id="6-2利用NMAP扫描Metasploitable2的操作系统类型，并附截图"><a href="#6-2利用NMAP扫描Metasploitable2的操作系统类型，并附截图" class="headerlink" title="6.2利用NMAP扫描Metasploitable2的操作系统类型，并附截图"></a>6.2利用NMAP扫描Metasploitable2的操作系统类型，并附截图</h4><p>回答：扫描命令为“nmap -O +目标 IP”</p>
+<p>Metasploitable2的操作系统为linux</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/6-2-1.png"></p>
+<h4 id="6-3-利用NMAP穷举-Metasploitable2上dvwa的登录账号和密码"><a href="#6-3-利用NMAP穷举-Metasploitable2上dvwa的登录账号和密码" class="headerlink" title="6.3 利用NMAP穷举 Metasploitable2上dvwa的登录账号和密码"></a>6.3 利用NMAP穷举 Metasploitable2上dvwa的登录账号和密码</h4><h4 id="6-4-查阅资料，永恒之蓝-WannaCry蠕虫利用漏洞的相关信息。"><a href="#6-4-查阅资料，永恒之蓝-WannaCry蠕虫利用漏洞的相关信息。" class="headerlink" title="6.4 查阅资料，永恒之蓝-WannaCry蠕虫利用漏洞的相关信息。"></a>6.4 查阅资料，永恒之蓝-WannaCry蠕虫利用漏洞的相关信息。</h4><p>回答：WannaCry（又叫Wanna Decryptor），一种“蠕虫式”的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92/16623990?fromModule=lemma_inlink">勒索病毒</a>软件，大小3.3MB，由不法分子利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/NSA/1128824?fromModule=lemma_inlink">NSA</a>（National Security Agency，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E5%AE%B6%E5%AE%89%E5%85%A8%E5%B1%80/300052?fromModule=lemma_inlink">美国国家安全局</a>）泄露的危险漏洞“EternalBlue”（永恒之蓝）进行传播 [1]。勒索病毒肆虐，俨然是一场全球性互联网灾难，给广大电脑用户造成了巨大损失。最新统计数据显示，100多个国家和地区超过10万台电脑遭到了勒索病毒攻击、感染。 [2]勒索病毒是自熊猫烧香以来影响力最大的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%97%85%E6%AF%92/4811584?fromModule=lemma_inlink">病毒</a>之一。WannaCry勒索病毒全球大爆发，至少150个国家、30万名用户中招，造成损失达80亿美元，已经影响到金融，能源，医疗等众多行业，造成严重的危机管理问题。中国部分Windows操作系统用户遭受感染，校园网用户首当其冲，受害严重，大量实验室数据和毕业设计被锁定加密。部分大型企业的应用系统和数据库文件被加密后，无法正常工作，影响巨大。</p>
+<h4 id="7、利用ZoomEye搜索一个西门子公司工控设备，并描述其可能存在的安全问题。"><a href="#7、利用ZoomEye搜索一个西门子公司工控设备，并描述其可能存在的安全问题。" class="headerlink" title="7、利用ZoomEye搜索一个西门子公司工控设备，并描述其可能存在的安全问题。"></a>7、利用ZoomEye搜索一个西门子公司工控设备，并描述其可能存在的安全问题。</h4><p>回答：1. Apache Struts 目录遍历导致文件上传漏洞</p>
+<p>Apache Struts是美国阿帕奇（Apache）软件基金会下属的Jakarta项目中的一个子项目，是一个基于MVC设计的Web应用框架。漏洞源于文件上传逻辑存在缺陷，攻击者可利用上传文件参数启动路径遍历，上传恶意文件，进而导致远程代码执行。</p>
+<p>2.Apache ActiveMQ jolokia 远程代码执行漏洞</p>
+<p> Apache ActiveMQ 中存在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C&spm=1001.2101.3001.7020">远程代码执行</a>漏洞，具有 Apache ActiveMQ 服务器TCP端口（默认为61616）访问权限的远程攻击者可以通过发送恶意数据到服务器从而执行任意代码。</p>
+<p>3.CVE-2019-0211 Apache Root Privilege Escalation</p>
+<p>在MPM prefork中，以root身份运行的主服务器进程管理一个单线程、低权限（www-data）的工作进程池，用于处理HTTP请求。为了从工作进程那里获得反馈，Apache维护了一个共享内存区域（SHM）计分板，其中包含各种信息，例如工作进程的PID，以及它们处理的最后一个请求。每个工作进程都以维护与其PID相关联的process_score结构为目标，并且具有对SHM的完全读&#x2F;写访问权限。</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/7-1.png"></p>
+<h3 id="8、Winhex简单数据恢复与取证"><a href="#8、Winhex简单数据恢复与取证" class="headerlink" title="8、Winhex简单数据恢复与取证"></a>8、Winhex简单数据恢复与取证</h3><h4 id="8-1-elephant-jpg不能打开了，利用WinHex修复，说明修复过程。"><a href="#8-1-elephant-jpg不能打开了，利用WinHex修复，说明修复过程。" class="headerlink" title="8.1 elephant.jpg不能打开了，利用WinHex修复，说明修复过程。"></a>8.1 elephant.jpg不能打开了，利用WinHex修复，说明修复过程。</h4><p>回答：文件类型为jpg文件，但文件头却为00 00 FF E0,jpg文件的文件头应为FF D8 FF E0,修改文件头得到图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">一、常见文件头文件尾</span><br><span class="line">1、图片</span><br><span class="line">JPEG 文件头：FF D8 FF 文件尾：FF D9</span><br><span class="line">TGA 未压缩的前4字节 00 00 02 00 RLE压缩的前5字节 00 00 10 00 00</span><br><span class="line">PNG 文件头：89 50 4E 47 0D 0A 1A 0A 文件尾：AE 42 60 82</span><br><span class="line">GIF 文件头：47 49 46 38 39(37) 61 文件尾：00 3B</span><br><span class="line">BMP 文件头：42 4D 文件头标识(2 bytes) 42(B) 4D(M)</span><br><span class="line">TIFF (tif) 文件头：49 49 2A 00</span><br><span class="line">ico 文件头：00 00 01 00</span><br><span class="line">Adobe Photoshop (psd) 文件头：38 42 50 53</span><br><span class="line">2、office文件</span><br><span class="line">MS Word/Excel (xls.or.doc) 文件头：D0 CF 11 E0</span><br><span class="line">MS Access (mdb) 文件头：53 74 61 6E 64 61 72 64 20 4A</span><br><span class="line">WordPerfect (wpd) 文件头：FF 57 50 43</span><br><span class="line">Adobe Acrobat (pdf) 文件头：25 50 44 46 2D 31 2E</span><br><span class="line">application/vnd.visio(vsd) 文件头：D0 CF 11 E0 A1 B1 1A E1</span><br><span class="line">Email [thorough only] (eml) 文件头：44 65 6C 69 76 65 72 79 2D 64 61 74 65 3A</span><br><span class="line">Outlook Express (dbx) 文件头：CF AD 12 FE C5 FD 74 6F</span><br><span class="line">Outlook (pst) 文件头：21 42 44 4E</span><br><span class="line">Rich Text Format (rtf) 文件头：7B 5C 72 74 66</span><br><span class="line">txt 文件(txt) 文件头：Unicode：FE FF / Unicode big endian：FF FE / UTF-8：EF BB BF /ANSI编码是没有文件头的</span><br><span class="line">3、压缩包文件</span><br><span class="line">ZIP Archive (zip) 文件头：50 4B 03 04 文件尾：50 4B</span><br><span class="line">RAR Archive (rar) 文件头：52 61 72 21</span><br><span class="line">4、音频文件</span><br><span class="line">Wave (wav) 文件头：57 41 56 45</span><br><span class="line">audio(Audio) 文件头： 4D 54 68 64</span><br><span class="line">audio/x-aac（aac）</span><br><span class="line">文件头：FF F1(9)</span><br><span class="line">5、视频文件</span><br><span class="line">AVI (avi) 文件头：41 56 49 20</span><br><span class="line">Real Audio (ram) 文件头：2E 72 61 FD</span><br><span class="line">Real Media (rm) 文件头：2E 52 4D 46</span><br><span class="line">MPEG (mpg) 文件头：00 00 01 BA(3)</span><br><span class="line">Quicktime (mov) 文件头：6D 6F 6F 76</span><br><span class="line">Windows Media (asf) 文件头：30 26 B2 75 8E 66 CF 11</span><br><span class="line">MIDI (mid) 文件头：4D 54 68 64</span><br><span class="line">6、代码文件</span><br><span class="line">XML (xml) 文件头：3C 3F 78 6D 6C</span><br><span class="line">HTML (html) 文件头：68 74 6D 6C 3E</span><br><span class="line">Quicken (qdf) 文件头：AC 9E BD 8F</span><br><span class="line">Windows Password (pwl) 文件头：E3 82 85 96</span><br><span class="line">7、其他类型</span><br><span class="line">windows证书文件(der) 文件头：30 82 03 C9</span><br><span class="line">CAD (dwg) 文件头：41 43 31 30</span><br><span class="line">Windows Shortcut (lnk) 文件头：4C 00 00 00</span><br><span class="line">Windows reg(reg) 文件头：52 45 47 45 44 49 54 34</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/8-1-1.png"></p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/8-1-2.png"></p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/8-1-3.jpg"></p>
+<h4 id="8-2-笑脸背后的阴霾：图片smile有什么隐藏信息。"><a href="#8-2-笑脸背后的阴霾：图片smile有什么隐藏信息。" class="headerlink" title="8.2 笑脸背后的阴霾：图片smile有什么隐藏信息。"></a>8.2 笑脸背后的阴霾：图片smile有什么隐藏信息。</h4><p>回答：隐藏信息为tom is the kille-.</p>
+<p><img src="/../images/%E5%AE%9E%E9%AA%8C1-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F.assets/8-2-1.png"></p>
+<h4 id="8-3-尝试使用数据恢复软件恢复你的U盘中曾经删除的文件。"><a href="#8-3-尝试使用数据恢复软件恢复你的U盘中曾经删除的文件。" class="headerlink" title="8.3 尝试使用数据恢复软件恢复你的U盘中曾经删除的文件。"></a>8.3 尝试使用数据恢复软件恢复你的U盘中曾经删除的文件。</h4><p> 回答：下载一定的软件即可恢复</p>
+<h3 id="9、讨论学校热点GUET-WiFi的安全问题，以截图说明。"><a href="#9、讨论学校热点GUET-WiFi的安全问题，以截图说明。" class="headerlink" title="9、讨论学校热点GUET-WiFi的安全问题，以截图说明。"></a>9、讨论学校热点GUET-WiFi的安全问题，以截图说明。</h3><h3 id="10、实验小结"><a href="#10、实验小结" class="headerlink" title="10、实验小结"></a>10、实验小结</h3><p><strong>实验报告小结需要描述Ethical Hacking的理解</strong>。</p>
+<p>我对Ethical Hacking的理解：我对道德黑客的理解是指通过授权且合法的方式，以保护和提升网络安全为目标的技术活动。道德黑客是一群具备专业知识和技能的安全专家，他们通过模拟攻击和漏洞测试来评估系统和网络的安全性。他们的主要目的是发现潜在的安全风险，并向组织提供建议和解决方案来增强其安全性。</p>
+<p>道德黑客与恶意黑客有着明显的区别，他们严格遵守法律和道德准则，并通过与组织合作的方式来执行其任务。他们的活动是经过授权的，通常在组织的请求下进行，以保护系统免受潜在的攻击和数据泄露。</p>
+<p>道德黑客的工作范围包括对网络、应用程序和系统进行漏洞扫描、渗透测试、安全评估等活动。他们利用类似黑客攻击的技术手段来发现漏洞，然后向组织报告这些漏洞以及相应的修复建议。</p>
+<p>总而言之，道德黑客的目标是通过帮助组织发现并修复安全漏洞，提高网络和系统的安全性，从而保护用户的数据和隐私。他们在维护网络安全方面发挥着重要的作用。</p>
+<p>1.向网络上传个人照片时，若不想暴露个人位置，需要对照片的关键信息打上马赛克。</p>
+<p>2.通过LAC码和CID码，可以初步确定手机用户的位置，所以自己手机的LAC和CID码不应该随便让其他人知道。</p>
+<p>3.利用一定软件可以进行编码解码。注意：如果数据的字节数不是3的倍数，则其位数就不是6的倍数，那么就不能精确地划分成6位的块。需在原数据后面添加1个或2个零值字节，使其字节数是3的倍数。</p>
+<p>4.当文件打不开时，可以利用winhex进行修复</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">cQian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/12/10/%E5%AE%9E%E9%AA%8C%E4%B8%80%20%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F/">http://example.com/2023/12/10/实验一 网络扫描与网络侦察/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">cQianBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/08/%E6%A0%88/" title="栈"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">栈</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cQian</div><div class="author-info__description">cQian's bolg</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80-%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F"><span class="toc-text">实验一 网络扫描与网络侦察</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84%E5%92%8C%E8%A6%81%E6%B1%82"><span class="toc-text">1. 实验目的和要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">2. 实验步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8EGoogle%E6%88%96%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E9%BA%BB%E7%9C%81%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2%E7%BD%91%E7%AB%99%E4%B8%AD%E6%96%87%E4%BB%B6%E5%90%8D%E5%8C%85%E5%90%AB%E2%80%9Cnetwork-security%E2%80%9D%E7%9A%84pdf%E6%96%87%E6%A1%A3%EF%BC%8C%E6%88%AA%E5%9B%BE%E6%90%9C%E7%B4%A2%E5%BE%97%E5%88%B0%E7%9A%84%E9%A1%B5%E9%9D%A2%E3%80%82"><span class="toc-text">1、用搜索引擎Google或百度搜索麻省理工学院网站中文件名包含“network security”的pdf文档，截图搜索得到的页面。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%85%A7%E7%89%87%E4%B8%AD%E7%9A%84%E5%A5%B3%E7%94%9F%E5%9C%A8%E5%93%AA%E9%87%8C%E6%97%85%E8%A1%8C%EF%BC%9F%E6%88%AA%E5%9B%BE%E6%90%9C%E7%B4%A2%E5%88%B0%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-text">2、照片中的女生在哪里旅行？截图搜索到的地址信息。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%89%8B%E6%9C%BA%E4%BD%8D%E7%BD%AE%E5%AE%9A%E4%BD%8D%E3%80%82"><span class="toc-text">3、手机位置定位。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81"><span class="toc-text">4、编码解码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%9C%B0%E5%9D%80%E4%BF%A1%E6%81%AF"><span class="toc-text">5、地址信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E5%86%85%E7%BD%91%E4%B8%AD%E6%8D%95%E8%8E%B7%E5%88%B0%E4%B8%80%E4%B8%AA%E4%BB%A5%E5%A4%AA%E5%B8%A7%EF%BC%8C%E6%BA%90MAC%E5%9C%B0%E5%9D%80%E4%B8%BA%EF%BC%9A98-CA-33-02-27-B5%EF%BC%9B%E7%9B%AE%E7%9A%84IP%E5%9C%B0%E5%9D%80%E4%B8%BA%EF%BC%9A202-193-64-34%EF%BC%8C%E5%9B%9E%E7%AD%94%E9%97%AE%E9%A2%98%EF%BC%9A%E8%AF%A5%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BB%80%E4%B9%88%E5%93%81%E7%89%8C%E7%9A%84%E8%AE%BE%E5%A4%87%EF%BC%8C%E8%AE%BF%E9%97%AE%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E7%BD%91%E7%AB%99%EF%BC%9F%E5%B9%B6%E9%99%84%E6%88%AA%E5%9B%BE%E3%80%82"><span class="toc-text">5.1内网中捕获到一个以太帧，源MAC地址为：98-CA-33-02-27-B5；目的IP地址为：202.193.64.34，回答问题：该用户使用的什么品牌的设备，访问的是什么网站？并附截图。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E8%AE%BF%E9%97%AEhttps-whatismyipaddress-com%E5%BE%97%E5%88%B0MyIP%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%88%A9%E7%94%A8ipconfig-Windows-%E6%88%96ifconfig-Linux-%E6%9F%A5%E7%9C%8B%E6%9C%AC%E6%9C%BAIP%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%B8%A4%E8%80%85%E5%80%BC%E7%9B%B8%E5%90%8C%E5%90%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E4%B8%8D%E7%9B%B8%E5%90%8C%E7%9A%84%E8%AF%9D%EF%BC%8C%E8%AF%B4%E6%98%8E%E5%8E%9F%E5%9B%A0"><span class="toc-text">5.2 访问https:&#x2F;&#x2F;whatismyipaddress.com得到MyIP信息，利用ipconfig(Windows)或ifconfig(Linux)查看本机IP地址，两者值相同吗？如果不相同的话，说明原因</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81NMAP%E4%BD%BF%E7%94%A8"><span class="toc-text">6、NMAP使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1%E5%88%A9%E7%94%A8NMAP%E6%89%AB%E6%8F%8FMetasploitable2%EF%BC%88%E9%9C%80%E4%B8%8B%E8%BD%BD%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%95%9C%E5%83%8F%EF%BC%89%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%BC%80%E6%94%BE%E6%83%85%E5%86%B5%E3%80%82%E5%B9%B6%E9%99%84%E6%88%AA%E5%9B%BE%E3%80%82%E8%AF%B4%E6%98%8E%E5%85%B6%E4%B8%AD%E5%9B%9B%E4%B8%AA%E7%AB%AF%E5%8F%A3%E7%9A%84%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1%EF%BC%8C%E6%9F%A5%E9%98%85%E8%B5%84%E6%96%99%EF%BC%8C%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E%E8%AF%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">6.1利用NMAP扫描Metasploitable2（需下载虚拟机镜像）的端口开放情况。并附截图。说明其中四个端口的提供的服务，查阅资料，简要说明该服务的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2%E5%88%A9%E7%94%A8NMAP%E6%89%AB%E6%8F%8FMetasploitable2%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%B9%B6%E9%99%84%E6%88%AA%E5%9B%BE"><span class="toc-text">6.2利用NMAP扫描Metasploitable2的操作系统类型，并附截图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-%E5%88%A9%E7%94%A8NMAP%E7%A9%B7%E4%B8%BE-Metasploitable2%E4%B8%8Advwa%E7%9A%84%E7%99%BB%E5%BD%95%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-text">6.3 利用NMAP穷举 Metasploitable2上dvwa的登录账号和密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4-%E6%9F%A5%E9%98%85%E8%B5%84%E6%96%99%EF%BC%8C%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D-WannaCry%E8%A0%95%E8%99%AB%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-text">6.4 查阅资料，永恒之蓝-WannaCry蠕虫利用漏洞的相关信息。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E5%88%A9%E7%94%A8ZoomEye%E6%90%9C%E7%B4%A2%E4%B8%80%E4%B8%AA%E8%A5%BF%E9%97%A8%E5%AD%90%E5%85%AC%E5%8F%B8%E5%B7%A5%E6%8E%A7%E8%AE%BE%E5%A4%87%EF%BC%8C%E5%B9%B6%E6%8F%8F%E8%BF%B0%E5%85%B6%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-text">7、利用ZoomEye搜索一个西门子公司工控设备，并描述其可能存在的安全问题。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81Winhex%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%8F%96%E8%AF%81"><span class="toc-text">8、Winhex简单数据恢复与取证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-elephant-jpg%E4%B8%8D%E8%83%BD%E6%89%93%E5%BC%80%E4%BA%86%EF%BC%8C%E5%88%A9%E7%94%A8WinHex%E4%BF%AE%E5%A4%8D%EF%BC%8C%E8%AF%B4%E6%98%8E%E4%BF%AE%E5%A4%8D%E8%BF%87%E7%A8%8B%E3%80%82"><span class="toc-text">8.1 elephant.jpg不能打开了，利用WinHex修复，说明修复过程。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-%E7%AC%91%E8%84%B8%E8%83%8C%E5%90%8E%E7%9A%84%E9%98%B4%E9%9C%BE%EF%BC%9A%E5%9B%BE%E7%89%87smile%E6%9C%89%E4%BB%80%E4%B9%88%E9%9A%90%E8%97%8F%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-text">8.2 笑脸背后的阴霾：图片smile有什么隐藏信息。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-%E5%B0%9D%E8%AF%95%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E6%81%A2%E5%A4%8D%E4%BD%A0%E7%9A%84U%E7%9B%98%E4%B8%AD%E6%9B%BE%E7%BB%8F%E5%88%A0%E9%99%A4%E7%9A%84%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-text">8.3 尝试使用数据恢复软件恢复你的U盘中曾经删除的文件。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E8%AE%A8%E8%AE%BA%E5%AD%A6%E6%A0%A1%E7%83%AD%E7%82%B9GUET-WiFi%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BB%A5%E6%88%AA%E5%9B%BE%E8%AF%B4%E6%98%8E%E3%80%82"><span class="toc-text">9、讨论学校热点GUET-WiFi的安全问题，以截图说明。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93"><span class="toc-text">10、实验小结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/10/%E5%AE%9E%E9%AA%8C%E4%B8%80%20%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BE%A6%E5%AF%9F/" title="实验一 网络扫描与网络侦察">实验一 网络扫描与网络侦察</a><time datetime="2023-12-10T13:57:39.142Z" title="发表于 2023-12-10 21:57:39">2023-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/08/%E6%A0%88/" title="栈">栈</a><time datetime="2023-12-08T09:41:14.018Z" title="发表于 2023-12-08 17:41:14">2023-12-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/08/%E9%93%BE%E8%A1%A8/" title="链表">链表</a><time datetime="2023-12-08T07:59:27.246Z" title="发表于 2023-12-08 15:59:27">2023-12-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/06/%E4%BD%9C%E4%B8%9A2/" title="作业No2">作业No2</a><time datetime="2023-12-06T03:17:46.631Z" title="发表于 2023-12-06 11:17:46">2023-12-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/05/%E4%BD%9C%E4%B8%9A1/" title="作业No1">作业No1</a><time datetime="2023-12-05T05:32:57.310Z" title="发表于 2023-12-05 13:32:57">2023-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By cQian</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
